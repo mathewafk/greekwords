@@ -22,6 +22,7 @@
 
     if (index === -1) return;
 
+    // Inject Navigation UI
     const navContainer = document.createElement("div");
     navContainer.style.margin = "1em 0";
     navContainer.style.padding = "1em";
@@ -29,21 +30,82 @@
     navContainer.style.textAlign = "center";
     navContainer.style.fontSize = "1.1em";
 
+    let prevHref = null;
+    let nextHref = null;
+
     if (index > 0) {
+        prevHref = "https://en.wiktionary.org/wiki/" + encodeURIComponent(greekWords[index - 1]) + "#Greek";
         const prevLink = document.createElement("a");
-        prevLink.href = "https://en.wiktionary.org/wiki/" + encodeURIComponent(greekWords[index - 1]) + "#Greek";
+        prevLink.href = prevHref;
         prevLink.textContent = "← Previous";
         prevLink.style.marginRight = "2em";
         navContainer.appendChild(prevLink);
     }
 
     if (index < greekWords.length - 1) {
+        nextHref = "https://en.wiktionary.org/wiki/" + encodeURIComponent(greekWords[index + 1]) + "#Greek";
         const nextLink = document.createElement("a");
-        nextLink.href = "https://en.wiktionary.org/wiki/" + encodeURIComponent(greekWords[index + 1]) + "#Greek";
+        nextLink.href = nextHref;
         nextLink.textContent = "Next →";
         navContainer.appendChild(nextLink);
     }
 
     const content = document.querySelector("#mw-content-text");
     if (content) content.prepend(navContainer);
+
+    // Add keyboard navigation
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "ArrowLeft" && prevHref) {
+            window.location.href = prevHref;
+        }
+        if (e.key === "ArrowRight" && nextHref) {
+            window.location.href = nextHref;
+        }
+    });
+})();
+const currentWord = decodeURIComponent(window.location.pathname.split("/").pop());
+    const index = greekWords.indexOf(currentWord);
+
+    if (index === -1) return;
+
+    // Inject Navigation UI
+    const navContainer = document.createElement("div");
+    navContainer.style.margin = "1em 0";
+    navContainer.style.padding = "1em";
+    navContainer.style.background = "#f9f9f9";
+    navContainer.style.textAlign = "center";
+    navContainer.style.fontSize = "1.1em";
+
+    let prevHref = null;
+    let nextHref = null;
+
+    if (index > 0) {
+        prevHref = "https://en.wiktionary.org/wiki/" + encodeURIComponent(greekWords[index - 1]) + "#Greek";
+        const prevLink = document.createElement("a");
+        prevLink.href = prevHref;
+        prevLink.textContent = "← Previous";
+        prevLink.style.marginRight = "2em";
+        navContainer.appendChild(prevLink);
+    }
+
+    if (index < greekWords.length - 1) {
+        nextHref = "https://en.wiktionary.org/wiki/" + encodeURIComponent(greekWords[index + 1]) + "#Greek";
+        const nextLink = document.createElement("a");
+        nextLink.href = nextHref;
+        nextLink.textContent = "Next →";
+        navContainer.appendChild(nextLink);
+    }
+
+    const content = document.querySelector("#mw-content-text");
+    if (content) content.prepend(navContainer);
+
+    // Add keyboard navigation
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "ArrowLeft" && prevHref) {
+            window.location.href = prevHref;
+        }
+        if (e.key === "ArrowRight" && nextHref) {
+            window.location.href = nextHref;
+        }
+    });
 })();
