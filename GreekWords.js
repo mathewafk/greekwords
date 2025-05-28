@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wiktionary Greek 5K Navigator
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Adds navigation buttons to Wiktionary Greek 5K word pages
 // @match        https://en.wiktionary.org/wiki/*
 // @grant        none
