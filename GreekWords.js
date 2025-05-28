@@ -5,6 +5,8 @@
 // @description  Adds navigation buttons to Wiktionary Greek 5K word pages
 // @match        https://en.wiktionary.org/wiki/*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/mathewafk/greekwords/main/GreekWords.js
+// @updateURL    https://raw.githubusercontent.com/mathewafk/greekwords/main/GreekWords.js
 // ==/UserScript==
 
 (function() {
