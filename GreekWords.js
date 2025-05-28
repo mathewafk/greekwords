@@ -7,6 +7,7 @@
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/mathewafk/greekwords/main/GreekWords.js
 // @updateURL    https://raw.githubusercontent.com/mathewafk/greekwords/main/GreekWords.js
+// @license      none
 // ==/UserScript==
 
 (function() {
